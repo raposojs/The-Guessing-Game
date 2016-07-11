@@ -19,7 +19,7 @@ Are you hot? Are you cold? Are you VERY HOT?! Or are
 you very cold..? Check the message below to see if 
 you're close to the winning number or not. 
 
-If you're still feeling insecure, press the hint  
+If you're still feeling insecure, press the hint 
 button to point out whether you're above or below
 the winning number! Press it twice if you're in need
 of extra help. The hint button can be used unlimited
