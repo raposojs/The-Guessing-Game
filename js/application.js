@@ -25,7 +25,7 @@ jQuery(document).ready(function(){
 
 		var dif = Math.abs(userSub - winningNumber);
 
-		$(".field").val("");
+		// $(".field").val("");
 
 		// if(counter < 0){
 		// 	alert("")

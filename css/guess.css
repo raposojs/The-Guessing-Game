@@ -22,7 +22,7 @@ h1 {
 }
 
 .tries {
-	color:red;
+	color:white;
 	font-size:30px;
 	text-align: center;
 	opacity: 0.85;
@@ -61,7 +61,7 @@ h6 {
 }
 
 .buttonsDIV {
-	padding: 10 0 3 0;
+	padding: 10 0 6 0;
 	text-align: center;
 }
 
