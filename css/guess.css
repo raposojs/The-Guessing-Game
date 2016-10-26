@@ -28,6 +28,13 @@ h1 {
 	opacity: 0.85;
 }
 
+.howManyHints {
+	color:yellow;
+	font-size:30px;
+	text-align: center;
+	opacity: 0.85;
+}
+
 body {
 	background-color: #444444;
 	color:white;
