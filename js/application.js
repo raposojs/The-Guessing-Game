@@ -12,11 +12,19 @@ var winningNumber = generateWinningNumber();
 
 jQuery(document).ready(function() {
 
-    //COUNTER
-    var counter = 5;
+    $(".field").keyup(function(event){
+        if(event.keyCode == 13){
+            $(".checker").click();
+        }
+    });
 
+    //COUNTER
+    var counter = 4;
+
+    //RETRIEVE USER SUBMISSION FROM TEXT FIELD AND ASSIGN TO userSub
     var userSub = Number($(".field").val());
 
+    //HELPER FUNCTION FOR HINT
     function isEven(n) {
         if (n % 2 === 0) {
             return "even"
@@ -25,26 +33,43 @@ jQuery(document).ready(function() {
         }
     }
 
+    //DO THIS WHEN CHECK IS CLICKED
     $(".checker").on("click", function() {
 
-        // RECEIVE PLAYER PICK
+        // UPDATE PLAYER PICK
         userSub = Number($(".field").val());
 
-        // DIFFERENCE BETWEEN PLAYER SUB AND WINNING NUMBER	
+        // DIFFERENCE BETWEEN PLAYER SUB AND WINNING NUMBER FOR HELP
         var dif = Math.abs(userSub - winningNumber);
 
-        if (counter <= 0) {
-        	$(".tries").text("You have " + 0 + " tries left! Try again...");
-            alert("No more tries left!\nThe winning number was [" + winningNumber + "]\nRestart to try again...")
+        if (counter === 0 && userSub !== winningNumber) {
+            $(".tries").css("color", "red")
+            $(".checker").css("display", "none")
+            $(".hint").css("display", "none")
+            $(".tries").text("No more tries left! The winning number was " + winningNumber + ". Restart to try again...")
         } else {
-
             if (userSub > 100 || userSub < 0 || Number.isInteger(userSub) === false) {
                 alert("Ha! Nice try...");
             } else {
                 if (userSub === winningNumber) {
-                    alert("You're correct!\nThe correct number is [" + userSub + "]");
-                    $(".tries").text("Good Job!");
+                    // alert("You're correct!\nThe correct number is [" + userSub + "]");
+                    $(".tries").css("color", "#FFD700")
+                    $(".field").css("border", "4px dotted #FFD700")
+                    $(".field").css("background-color", "black")
+                    $(".field").css("color", "#FFD700")
+                    $(".field").css("margin-top", "100px")
+                    $(".field").css("margin-bottom", "30px")
+                    $(".header").css("background-color", "rgba(255,215,0, 0.40)")
+                    $(".header p").css("color", "black")
+                    $("h1").css("color", "black")
+                    $("h2").css("display", "none")
+                    $("h3").css("display", "none")
+                    $("h4").css("display", "none")
+                    $(".checker").css("display", "none")
+                    $(".hint").css("display", "none")
+                    $(".tries").text("Good Job! " + winningNumber + " is the winning number!");
                 } else {
+                    $(".tries").css("color", "white")
                     if (counter === 0) {
                         $(".tries").text("You have " + counter + " tries left!");
                     } else if (dif >= 90) {
@@ -67,7 +92,7 @@ jQuery(document).ready(function() {
     var hints = 2;
 
     $(".hint").on("click", function() {
-
+        $(".tries").css("color", "#3366FF")
         if (hints === 2) {
 
             if (userSub > winningNumber) {
@@ -83,11 +108,15 @@ jQuery(document).ready(function() {
         } else if (hints === 1) {
             if (userSub > winningNumber) {
                 $(".tries").text("Try an " + isEven(winningNumber) + " number.")
-                $(".hint").text("No more hints left")
+                $(".hint").text("0 hints left")
+                // $(".hint").css("display", "none")
+                $(".hint").css("opacity", 0.5)
                 hints--
             } else if (userSub < winningNumber) {
                 $(".tries").text("Try an " + isEven(winningNumber) + " number.")
-                $(".hint").text("No more hints left")
+                $(".hint").text("0 hints left")
+                // $(".hint").css("display", "none")
+                $(".hint").css("opacity", 0.5)
                 hints--
             }
         }
